@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<title>Fx.TransMorph</title>
+<link rel="stylesheet" href="http://cheeaun.github.com/cacss/ca.min.css">
+<style>
+.demo{
+	position: relative;
+}
+.ball{
+	color: #fff;
+	background-color: red;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+#demo1{
+	width: 600px;
+	height: 350px;
+	border-bottom: 5px solid #000;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+<script src="http://github.com/cheeaun/Fx.TransMorph/raw/master/Source/Fx.TransMorph.js"></script>
+<script>
+window.addEvent('domready', function(){
+	var ball1 = $('ball1').set('transmorph', {
+		duration: 2000
+	});
+	
+	$('run1').addEvent('click', function(){
+		ball1.transmorph({
+			top: [0, 300],
+			left: [0, 550]
+		}, {
+			top: 'bounce:out',
+			left: 'cubic:out'
+		});
+	});
+});
+</script>
+<h1><a href="http://github.com/cheeaun/Fx.TransMorph">Fx.TransMorph</a></h1>
+<h2>Demo</h2>
+<p>A similar demo to James Padolsey's <a href="http://james.padolsey.com/javascript/easing-in-jquery-1-4a2/">Easing in jQuery 1.4a2</a>.</p>
+<button id="run1">Run</button>
+<div id="demo1" class="demo">
+	<div id="ball1" class="ball"></div>
+</div>
