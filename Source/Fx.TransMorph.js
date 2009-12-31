@@ -40,7 +40,8 @@ Fx.TransMorph.implement({
 	
 	compute: function(from, to, delta){
 		var now = {};
-		for (var p in from) now[p] = this.parent(from[p], to[p], delta[p]);
+		var isArray = ($type(delta) == 'object');
+		for (var p in from) now[p] = this.parent(from[p], to[p], isArray ? delta[p] : delta);
 		return now;
 	},
 	
