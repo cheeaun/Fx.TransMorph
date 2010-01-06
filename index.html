@@ -32,13 +32,21 @@ window.addEvent('domready', function(){
 		duration: 2000
 	});
 	
+	var topTrans = 'bounce:out', leftTrans = 'cubic:out';
+	var fxTransitionV = $('fxTransitionV'), fxTransitionH = $('fxTransitionH'),
+		fxEaseV = $('fxEaseV'), fxEaseH = $('fxEaseH');
+	$$('#fxTransitionV, #fxTransitionH, #fxEaseV, #fxEaseH').addEvent('change', function(){
+		topTrans = fxTransitionV.get('value') + ':' + fxEaseV.get('value');
+		leftTrans = fxTransitionH.get('value') + ':' + fxEaseH.get('value');
+	});
+	
 	$('run1').addEvent('click', function(){
 		ball1.transmorph({
 			top: [0, 300],
 			left: [0, 550]
 		}, {
-			top: 'bounce:out',
-			left: 'cubic:out'
+			top: topTrans,
+			left: leftTrans
 		});
 	});
 });
@@ -46,7 +54,49 @@ window.addEvent('domready', function(){
 <h1><a href="http://github.com/cheeaun/Fx.TransMorph">Fx.TransMorph</a></h1>
 <h2>Demo</h2>
 <p>A similar demo to James Padolsey's <a href="http://james.padolsey.com/javascript/easing-in-jquery-1-4a2/">Easing in jQuery 1.4a2</a>.</p>
+<fieldset>
+<div>
+<label for="fxTransitionH">Horizontal Transition</label>:
+<select id="fxTransitionH">
+	<option value="linear">Linear</option>
+	<option value="quad">Quadratic</option>
+	<option value="cubic" selected>Cubic</option>
+	<option value="quart">Quartic</option>
+	<option value="quint">Quintic</option>
+	<option value="sine">Sinusoidal</option>
+	<option value="expo">Exponential</option>
+	<option value="circ">Circular</option>
+	<option value="bounce">Bounce</option>
+	<option value="back">Back</option>
+	<option value="elastic">Elastic</option>
+</select>
+<select id="fxEaseH">
+	<option value="in">easeIn</option>
+	<option value="out" selected>easeOut</option>
+	<option value="in:out">easeInOut</option>
+</select>
+<label for="fxTransitionV">Vertical Transition</label>:
+<select id="fxTransitionV">
+	<option value="linear">Linear</option>
+	<option value="quad">Quadratic</option>
+	<option value="cubic">Cubic</option>
+	<option value="quart">Quartic</option>
+	<option value="quint">Quintic</option>
+	<option value="sine">Sinusoidal</option>
+	<option value="expo">Exponential</option>
+	<option value="circ">Circular</option>
+	<option value="bounce" selected>Bounce</option>
+	<option value="back">Back</option>
+	<option value="elastic">Elastic</option>
+</select>
+<select id="fxEaseV">
+	<option value="in">easeIn</option>
+	<option value="out" selected>easeOut</option>
+	<option value="in:out">easeInOut</option>
+</select>
 <button id="run1">Run</button>
+</div>
+</fieldset>
 <div id="demo1" class="demo">
 	<div id="ball1" class="ball"></div>
 </div>
